@@ -2,13 +2,15 @@
     "assignment_name": "Assignment 1",
     "contributors": [
         {
-            "name": "Jordan Matelsky",
-            "pennkey": "matelsky"
+            "name": "Yidi Huang",
+            "pennkey": "yidih"
+        },
+        {
+            "name": "Brian Chen",
+            "pennkey": "bychen9"
         }
     ],
     "sources": [
-        "https://example.com",
-        "Conversations with TA (include TA's name)",
-        "LLM (include information about the LLM and how it was used)"
+        "https://www.cs.toronto.edu/~rgrosse/courses/csc411_f18/slides/lec06-slides.pdf",
     ]
 }

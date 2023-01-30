@@ -1,7 +1,6 @@
 import numpy as np
 
 from numpy import linalg
-from tqdm.auto import tqdm
 
 
 class LinearRegression:
@@ -21,7 +20,7 @@ class LinearRegression:
         Fit a linear regression model using ordinary least squares
         """
         X_1 = np.vstack((X.T, np.ones(X.shape[0]))).T
-        beta_hat = np.dot(np.dot(np.linalg.inv(np.dot(X_1.T, X_1)), X_1.T), y)
+        beta_hat = np.dot(np.dot(linalg.inv(np.dot(X_1.T, X_1)), X_1.T), y)
         self.w = beta_hat[:-1]
         self.b = beta_hat[-1]
 
@@ -56,7 +55,7 @@ class GradientDescentLinearRegression(LinearRegression):
         self.w = np.random.rand(X.shape[1])
         self.b = 0
 
-        for i in tqdm(range(epochs)):
+        for i in range(epochs):
             y_pred = self.predict(X)
             resids = y_pred - y
             w_grad = np.mean(np.dot(resids, self.w))

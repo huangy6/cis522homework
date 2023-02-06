@@ -36,7 +36,7 @@ class MLP(torch.nn.Module):
         self.layers = torch.nn.ModuleList(layers)
 
         # initialize layers
-        [self.initializer(l.weight) for l in self.layers]
+        [self.initializer(layer.weight) for layer in self.layers]
         print(self)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:

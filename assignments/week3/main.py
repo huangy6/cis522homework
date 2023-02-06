@@ -78,6 +78,7 @@ def train(
         None
 
     """
+    print(f'Training on {device}')
     # Create an optimizer:
     optimizer = Adam(model.parameters(), lr=learning_rate)
     # Create a loss function:
@@ -145,7 +146,11 @@ def main():
         test_loader=test_loader,
         num_epochs=10,
         learning_rate=0.001,
-        device=torch.device("cuda" if torch.cuda.is_available() else "cpu"),
+        device=torch.device(
+            'mps' if torch.backends.mps.is_available()
+            else 'cuda' if torch.cuda.is_available()
+            else 'cpu'
+            )
     )
 
 

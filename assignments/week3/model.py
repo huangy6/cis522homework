@@ -4,6 +4,7 @@ from typing import Callable
 
 class MLP(torch.nn.Module):
     """Implementation of a simple multi-layer perceptron"""
+
     def __init__(
         self,
         input_size: int,
@@ -38,7 +39,6 @@ class MLP(torch.nn.Module):
         [self.initializer(l.weight) for l in self.layers]
         print(self)
 
-
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         Forward pass of the network.
@@ -52,7 +52,7 @@ class MLP(torch.nn.Module):
         x = self.layers[0](x)
 
         if len(self.layers) > 2:
-            for i in range(1, len(self.layers)-1):
+            for i in range(1, len(self.layers) - 1):
                 x = self.layers[i](x)
                 x = self.activation(x)
 

@@ -78,7 +78,7 @@ def train(
         None
 
     """
-    print(f"Training on {device}")
+    # print(f"Training on {device}")
     # Create an optimizer:
     optimizer = Adam(model.parameters(), lr=learning_rate)
     # Create a loss function:

@@ -16,7 +16,7 @@ from scheduler import CustomLRScheduler
 from config import CONFIG
 
 # Device configuration
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 
 def get_cifar10_data() -> Tuple[DataLoader, DataLoader]:
@@ -82,21 +82,24 @@ def train(
         # Set the model to training mode:
         model.train()
         # Loop over the training data:
-        for x, y in tqdm(train_loader):
-            # Move the data to the device:
-            x, y = x.to(device), y.to(device)
-            # Zero the gradients:
-            optimizer.zero_grad()
-            # Forward pass:
-            y_hat = model(x)
-            # Compute the loss:
-            loss = criterion(y_hat, y)
-            # Backward pass:
-            loss.backward()
-            # Update the parameters:
-            optimizer.step()
-            # Update the learning rate:
-            learning_rate_scheduler.step()
+        with tqdm(train_loader) as pbar:
+            for x, y in pbar:
+                # Move the data to the device:
+                x, y = x.to(device), y.to(device)
+                # Zero the gradients:
+                optimizer.zero_grad()
+                # Forward pass:
+                y_hat = model(x)
+                # Compute the loss:
+                loss = criterion(y_hat, y)
+                # Backward pass:
+                loss.backward()
+                # Update the parameters:
+                optimizer.step()
+                # Update the learning rate:
+                learning_rate_scheduler.step()
+                pbar.set_postfix(loss=loss.item())
+        print([g["lr"] for g in optimizer.param_groups])
         # Set the model to evaluation mode:
         model.eval()
         # Compute the accuracy on the test data:

@@ -2,8 +2,12 @@
     "assignment_name": "RegOpt",
     "contributors": [
         {
-            "name": "Change this to your name",
-            "pennkey": "MyPennKey"
+            "name": "Yidi Huang",
+            "pennkey": "yidih"
+        },
+        {
+            "name": "Yi-An Hsieh",
+            "pennkey": "yh667"
         }
     ],
     "sources": [

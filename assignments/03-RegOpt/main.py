@@ -99,7 +99,7 @@ def train(
                 # Update the learning rate:
                 learning_rate_scheduler.step()
                 pbar.set_postfix(loss=loss.item())
-        print([g["lr"] for g in optimizer.param_groups])
+        # print([g["lr"] for g in optimizer.param_groups])
         # Set the model to evaluation mode:
         model.eval()
         # Compute the accuracy on the test data:

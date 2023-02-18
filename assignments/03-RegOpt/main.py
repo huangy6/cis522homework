@@ -98,7 +98,9 @@ def train(
                 optimizer.step()
                 # Update the learning rate:
                 learning_rate_scheduler.step()
-                pbar.set_postfix(loss=loss.item())
+                pbar.set_postfix(
+                    loss=loss.item(), lr=learning_rate_scheduler.get_last_lr()
+                )
         # print([g["lr"] for g in optimizer.param_groups])
         # Set the model to evaluation mode:
         model.eval()

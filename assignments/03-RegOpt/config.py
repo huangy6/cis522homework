@@ -12,7 +12,7 @@ class CONFIG:
     initial_weight_decay = 0
 
     lrs_kwargs = {
-        "gamma_batch": 0.999,
+        "gamma_batch": 0.995,
         "gamma_max": 0.5,
         "reset_floor": 1e-5,
     }

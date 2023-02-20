@@ -39,6 +39,9 @@ class CustomLRScheduler(_LRScheduler):
         outs = []
         new_max = []
         for group, cycle_max in zip(self.optimizer.param_groups, self.max_lrs):
+            if cycle_max <= self.reset_floor:
+                outs.append(cycle_max)
+                new_max.append(cycle_max)
             if group["lr"] <= self.reset_floor:
                 outs.append(cycle_max)
                 new_max.append(cycle_max * self.gamma_max)

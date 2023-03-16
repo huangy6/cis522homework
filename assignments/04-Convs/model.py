@@ -7,7 +7,6 @@ def _conv_block(in_chn, out_chn):
     """Convolution block"""
     return [
         nn.Conv2d(in_chn, out_chn, kernel_size=3, stride=1, padding=1),
-        nn.BatchNorm2d(out_chn),
         nn.ReLU(),
     ]
 
@@ -20,10 +19,10 @@ class Model(nn.Module):
     def __init__(self, num_channels: int, num_classes: int) -> None:
         """Initialize model"""
         super(Model, self).__init__()
-        clf_block = [nn.Flatten(1), nn.Linear(2048, num_classes)]
+        clf_block = [nn.Flatten(1), nn.Linear(864, num_classes)]
         self.net = nn.Sequential(
-            *_conv_block(num_channels, 32),
-            nn.MaxPool2d(4),
+            *_conv_block(num_channels, 24),
+            nn.MaxPool2d(5),
             *clf_block,
         )
 

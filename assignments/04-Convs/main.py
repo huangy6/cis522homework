@@ -14,7 +14,7 @@ from model import Model
 from config import CONFIG
 
 # Device configuration
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 ACCURACY_THRESHOLD = 0.55
 

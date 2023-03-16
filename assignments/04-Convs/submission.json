@@ -2,11 +2,11 @@
     "assignment_name": "Convolutions",
     "contributors": [
         {
-            "name": "Change this to your name",
-            "pennkey": "MyPennKey"
+            "name": "Yidi Huang",
+            "pennkey": "yidih"
         }
     ],
     "sources": [
-        "Don't forget to list your sources/attribution here!"
+        "https://github.com/davidcpage/cifar10-fast/blob/master/bag_of_tricks.ipynb"
     ]
 }

@@ -19,10 +19,10 @@ class Model(nn.Module):
     def __init__(self, num_channels: int, num_classes: int) -> None:
         """Initialize model"""
         super(Model, self).__init__()
-        clf_block = [nn.Flatten(1), nn.Linear(864, num_classes)]
+        clf_block = [nn.Flatten(1), nn.Linear(1024, num_classes)]
         self.net = nn.Sequential(
-            *_conv_block(num_channels, 24),
-            nn.MaxPool2d(5),
+            *_conv_block(num_channels, 16),
+            nn.MaxPool2d(4),
             *clf_block,
         )
 
